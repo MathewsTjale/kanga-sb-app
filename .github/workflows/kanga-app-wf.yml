@@ -19,4 +19,6 @@ jobs:
         run:  sudo apt install docker-ce
       - name: Start Docker application
         run:  sudo systemctl start docker
+      - name: Run basic container to check if all is well
+        run:  sudo docker run hello-world
 
