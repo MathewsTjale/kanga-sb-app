@@ -5,6 +5,8 @@ jobs:
   test-connection:
     runs-on: ubuntu-latest
     steps:
+      - name: Update System with latest packages
+        run: sudo apt update -y
       - name: Run few test commands for the app.
         run: |
           echo "Hello Kanga App"
