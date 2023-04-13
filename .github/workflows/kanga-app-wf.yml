@@ -2,12 +2,21 @@ name: Kanga CI Flow
 on:
   workflow_dispatch
 jobs:
-  test-connection:
+  SetupWorkSpace:
     runs-on: ubuntu-latest
     steps:
+      - name: Scenario test
+        run:  echo "Hello Kanga App"    
       - name: Update System with latest packages
-        run: sudo apt update -y
-      - name: Run few test commands for the app.
-        run: |
-          echo "Hello Kanga App"
-          echo "Bye Kanga App"
+        run:  sudo apt update -y
+      - name: Install prerequisite packages
+        run:  sudo apt install apt-transport-https ca-certificates curl software-properties-common
+      - name: Download the Docker Keys
+        run:  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+      - name: Add docker repository
+        run:  sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+      - name: Install Docker application
+        run:  sudo apt install docker-ce
+      - name: Start Docker application
+        run:  sudo systemctl start docker
+
