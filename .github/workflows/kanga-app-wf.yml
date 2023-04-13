@@ -1,0 +1,11 @@
+name: Kanga CI Flow
+on:
+  workflow_dispatch
+jobs:
+  test-connection:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run few test commands for the app.
+        run: |
+          echo "Hello Kanga App"
+          echo "Bye Kanga App"
